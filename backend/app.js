@@ -8,13 +8,12 @@ import reservationRouter from './routes/reservationRoute.js'
 const app = express();
 dotenv.config({ path: './config/config.env' });  //path where env variables are stored.
 
-app.use(cors(
-    {
-        origin: [process.env.FRONTEND_URL], // replace with your frontend URL
-        methods: ['POST'],
-        credentials: true,
-
-    })); // to allow cross-origin requests
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    methods: ['GET','POST','OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+})); // to allow cross-origin requests
 
 //using app.use beacuse it use as middleware to parse incoming requests with JSON payloads
 
